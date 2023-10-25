@@ -42,7 +42,7 @@ post_pred_samples = old_faithful_posterior_predictive_samples(mix_df)
 
 # plot the data, with posterior samples of the cluster centers
 # and contours for the posterior predictive 95% intervals
-ggplot(as.data.frame(scale(faithful))) +
+ggplot(as.data.frame(faithful)) +
   aes(x=eruptions, y=waiting) +
   geom_point() +
   geom_point(data=posterior_mix,
