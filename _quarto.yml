@@ -3,17 +3,18 @@ project:
   output-dir: docs
 
 book:
-  title: "YOUR WORKSHOP TITLE"
-  author: "[YOUR NAME]"
-  date: "DATE"
+  title: "Introduction to Stan"
+  author: "Wesley Brooks"
+  date: "2023-10-25"
   
   search: true
-  repo-url: https://github.com/d-rug/YOUR_REPO
+  repo-url: https://github.com/d-rug/workshop_stan
   downloads: [pdf]
   chapters:
     - index.qmd
     - 01_intro.qmd
-    - 02_example.qmd
+    - 02_using_stan.qmd
+    - 03_example.qmd
   
   sidebar:
     logo: https://github.com/d-rug/d-rug.github.io/raw/main/DRUG_final_cobalt.png
