@@ -4,7 +4,7 @@ format: html
 ---
 
 ## An example
-OK, let'srun an example!
+OK, let's run an example!
 
 Remember that we just said there are fundamentally three steps to executing a model:
 
@@ -131,6 +131,8 @@ library(cmdstanr)
 
 
 ```{r compile-stan-model}
+#| warning: false
+#| message: false
 mix_model = cmdstan_model(stan_file="stan/bivariate_mixture.stan")
 ```
 
@@ -153,7 +155,6 @@ Now the magic happens: We set Stan loose with data and a model, and will sample 
 #| output: false
 #| warning: false
 #| eval: false
-
 # sample the posterior for the model, given the data
 mix_fit = mix_model$sample(
   data=stan_data,
@@ -167,7 +168,6 @@ mix_fit = mix_model$sample(
 
 ```{r load-stan-fit}
 #| include:false
-
 # load the saved posterior fit
 load(file="data/mix_fit.rda")
 ```
@@ -180,6 +180,8 @@ The first step is probably to summarize the posterior samples. Look for Rhat nea
 
 You could also directly inspect the posterior samples:
 ```{r posterior-samples}
+#| warning: false
+#| message: false
 # the posterior package provides the function `as_draws_df()`
 library(posterior)
 
@@ -195,6 +197,9 @@ Here I've created a combined plot of the raw data, posterior samples of the cent
 Note that I am extracting posterior samples from the fitted model object via a couple of custom functions from a package called `workshp.stan` - you can install it via `remotes::install_github("d-rug/workshop_stan")`
 
 ```{r posterior-plot}
+#| warning: false
+#| message: false
+
 library(dplyr)
 library(tidyr)
 library(ggplot2)
