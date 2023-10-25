@@ -167,7 +167,8 @@ mix_fit = mix_model$sample(
 
 
 ```{r load-stan-fit}
-#| include:false
+#| include: false
+#| echo: false
 # load the saved posterior fit
 load(file="data/mix_fit.rda")
 ```
