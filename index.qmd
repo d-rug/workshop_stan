@@ -7,4 +7,4 @@ format:
 
 # Overview {.unnumbered}
 
-YOUR DESCRIPTION, LEARNING GOALS, PREREQUISITES, ETC
+**Workshop site: `http://d-rug.github.io/workshop_stan`**
