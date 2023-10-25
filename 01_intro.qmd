@@ -3,23 +3,34 @@ title: "Introduction"
 format: html
 ---
 
-## Quarto
+## Stan
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Stan is a platform for Bayesian modeling of data. It is a platform because it combines a language with a compiler and sampler, and an API that enables extensions in other statistical programming software. Today, obviously, we will talk about Stan in R. Working in R also provides an ecosystem of related packages that make preparing and interpreting your model easier.
 
-## Running Code
+## Installing Stan
+There is more than one way to do it! I recommend installing the `cmdstanr` package.
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+### Requirements
+You need a C++ compiler toolchain in order to use Stan through `cmdstanr` (other packages may install their own compiler[?]). If you don't have a C++ compiler toolchain, here's how to install one:
+
+ - *Windows* - [Install Rtools: https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+ - *Mac* - Uses XCode command line tools. [Check the tools for R: https://mac.r-project.org/tools/](https://mac.r-project.org/tools/)
+ - *Linux* - your package manager should be able to install `gcc`.
+ 
+### Steps
+You'll install the `cmdstanr` package, which depends on haing `cmdstan` installed. But don't worry - the R package provides a function that downloads and installs `cmdstan`. First install the R package:
 
 ```{r}
-1 + 1
+#| eval: false
+# we recommend running this is a fresh R session or restarting your current session
+install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
 ```
 
-You can add options to executable code like this 
-
+Then use it to install `cmdstan`:
 ```{r}
-#| echo: false
-2 * 2
+#| eval: false
+cmdstanr::install_cmdstan()
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+
+

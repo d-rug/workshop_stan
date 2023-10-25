@@ -1,0 +1,76 @@
+---
+title: "Using Stan"
+format: html
+---
+
+## An example
+OK, let'srun an example!
+
+Remember that we just said there are fundamentally three steps to executing a model:
+
+1. Compile a Stan model
+2. Attach data to it, and
+3. Sample from the model
+
+Well, there may as well be a double step zero that comes before we can consider executing a: collect data and conceive an appropriate model. We'll use a simple example - [see the Stan documentation for a long list of examples and case studies](https://mc-stan.org/users/documentation/case-studies.html).
+
+### Data
+Every installation of R comes with a data set called `faithful`, which reports on the interval and duration of eruptions of the Old Faithful geyser in Yellowstone National Park, Wyoming. Let's load the data and look at it.
+
+```{r old-faithful}
+data(faithful)
+plot(faithful)
+```
+
+It's apparent from the plot that there is a bimodal distribution, with some eruptions lasting longer and with a longer duration between them, and another cluster of shorter eruptions with a shorter duration between them. Let's create a model of the eruptions.
+
+### Model
+A Stan model has sections for data, parameters, and model:
+
+```{stan}
+data{
+  int<lower=1> N;
+  vector[N] duration;
+  vector[N] interval;
+}
+parameters{
+  real<lower=0> between_cor;
+  vector[2] grp1_mean;
+  vector[2] grp2_mean;
+  
+  vector[2]<lower=0> std_wthn;
+  vector[2]<lower=0> std_btw;
+  real<lower=0> within_cor;
+  
+  real<lower=0, upper=1> prob_grp1;
+}
+model{
+  # define priors:
+  between_cor ~ exp(1);
+  within_cor ~ exp(1);
+  std_wthn ~ exp(1);
+  std_btw ~ exp(1);
+  grp1_mean ~ std_normal();
+  grp2_mean ~ std_normal();
+  prob_grp1 ~ beta(1, 1);
+  
+  cov_matrix[2] Sigma_btw;
+  Sigma_btw[1,1] = std_btw[1]^2;
+  Sigma_btw[1,2] = Sigma_btw[2,1] = std_btw[1] * std_btw[2] * between_cor;
+  Sigma_btw[2,2] = std_btw[2]^2;
+  
+  cov_matrix[2] Sigma_wthn;
+  Sigma_wthn[1,1] = std_wthn[1]^2;
+  Sigma_wthn[1,2] = Sigma_wthn[2,1] = std_wthn[1] * std_wthn[2] * within_cor;
+  Sigma_wthn[2,2] = std_wthn[2]^2;
+  
+  
+  
+  # define the model:
+  
+  
+}
+```
+
+
+

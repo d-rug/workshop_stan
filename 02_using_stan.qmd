@@ -1,0 +1,22 @@
+---
+title: "Using Stan"
+format: html
+---
+
+## Using Stan
+Today we are learning to use Stan via the R package `cmdstanr`. This is not the only option - in particular, the packages `brms` and `rethinking` implement two other paradigms for using Stan from R.
+
+### `brms`
+If you've already learned to use mixed-effects models in R, then the easiest way to get into using Stan through R is via the package `brms`. `brms` basically allows you to write regression models in the same for as with the `lme4` package, but the calculation uses Stan behind the scenes. We have an upcoming mini-workshop on `brms` (November 1).
+
+### `rethinking`
+Former UC Davis professor Richard McElreath created the `rethinking` package as an accompaniment to his (excellent) textbook about applied Bayesian modeling, "Statistical Rethinking". Like `cmdstanr`, `rethinking` can implement models that aren't just regression. In fact the model language of `rethinking` probably gives you access to the entire catalog of Stan's features, and in a (for some) more intuitive language. But we aren't going to talk about `rethinking` because `cmdstanr` is more fundamental, so everything you learn here wil apply to `rethinking` as well, but not the reverse.
+
+### `cmdstanr`
+Ahh, the main event. You should understand that `cmdstanr` is a lightweight wrapper over Stan. So most of what you need to learn right now is not about R, but about Stan itself. `cmdstanr` provides a way to do the three fundamental steps:
+
+1. Compile a Stan model
+2. Attach data to it, and
+3. Sample from the model
+
+

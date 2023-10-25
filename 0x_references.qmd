@@ -1,0 +1,9 @@
+---
+title: "References"
+format: html
+---
+
+## References
+
+ - [Main Stan website: https://mc-stan.org](https://mc-stan.org)
+ - []()
