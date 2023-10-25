@@ -1,0 +1,10 @@
+Package: stan_workshop
+Title: Provides some helper functions for the Stan mini-workshop
+Version: 0.0.0.9000
+Authors@R: 
+    person("Wesley", "Brooks", , "wbrooks@ucdavis.edu", role = c("aut", "cre"))
+Description: Provides some helper functions for the Stan mini-workshop.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
