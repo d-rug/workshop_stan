@@ -1,4 +1,4 @@
-Package: stan_workshop
+Package: workshop.stan
 Title: Provides some helper functions for the Stan mini-workshop
 Version: 0.0.0.9000
 Authors@R: 
